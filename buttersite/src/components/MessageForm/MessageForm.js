@@ -1,14 +1,17 @@
-import React, { useState } from "react"
+import React from "react"
 import Models from '../../Models'
+import {useRecoilState, atom} from 'recoil'
 
-const MessageForm = () => {
-    const [ form , updateForm ] = useState({
-        user:"ButterBots House",
-        msg:"",
-        command:"message"
+import atoms from '../../Recoil/atoms/index'
 
-    })
+const { msg } = atoms 
+console.log(msg)
+
+const MessageForm = ({userToken}) => {
+    const [form, updateForm] = useRecoilState(msg);
+   
     const handleChange = (e) => {
+        console.log(form)
         updateForm({
             ...form,
             [e.target.name]:e.target.value
@@ -16,7 +19,7 @@ const MessageForm = () => {
     }
     return (
         <form id="command-form">
-            <input type="text" onChange={handleChange} name="msg" value={form.msg}/>
+            <input type="text" onChange={handleChange} name="content" value={form.content}/>
             <input type="text" onChange={handleChange} name="user" value={form.user}/>
             <button onClick = {e => {e.preventDefault(); Models.Message.sendMessageToUser(form)}}/>
         </form>

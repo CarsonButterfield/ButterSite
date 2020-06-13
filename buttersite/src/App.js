@@ -1,12 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 
 import MessageForm from './components/MessageForm/MessageForm'
+import Oauth2 from './components/auth/oauth'
+
+
+
 function App() {
   return (
     <div className="App">
-      <MessageForm/>
+      <RecoilRoot> 
+          <Oauth2/>
+          <MessageForm />
+      </RecoilRoot>
     </div>
   );
 }
