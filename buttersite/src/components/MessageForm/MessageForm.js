@@ -1,6 +1,6 @@
 import React from "react"
 import Models from '../../Models'
-import {useRecoilState, atom} from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import atoms from '../../Recoil/atoms/index'
 

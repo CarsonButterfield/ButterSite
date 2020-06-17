@@ -5,7 +5,7 @@ import './App.css';
 
 import MessageForm from './components/MessageForm/MessageForm'
 import Oauth2 from './components/auth/oauth'
-
+import Banner from './components/Banner'
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
         <Router>
           <Oauth2/>
           <MessageForm />
+          <Banner/>
         </Router>
       </RecoilRoot>
     </div>
