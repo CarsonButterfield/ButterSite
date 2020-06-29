@@ -42,11 +42,11 @@ const Oauth2 = (props) => {
             checkToken()   
 
         }
-    },[user,checkToken])
+    },[ user , setUser , setUserGuildData])
     return(
         <div id="login">
        {!user.loggedIn ? 
-       <a id="login" href="https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds">Identify Yourself</a>
+       <a id="login" href="https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds">Log In</a>
         : <Link to="/" onClick={logout}>Logout</Link>
     }
         {user.loggedIn && user.username}
