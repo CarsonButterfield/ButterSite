@@ -2,10 +2,10 @@ import React from "react"
 import Models from '../../Models'
 import { useRecoilState } from 'recoil'
 
-import atoms from '../../Recoil/atoms/index'
+import atoms from '../../Recoil/atoms'
 
 const { msg } = atoms 
-console.log(msg)
+console.log({msg})
 
 const MessageForm = ({userToken}) => {
     const [form, updateForm] = useRecoilState(msg);

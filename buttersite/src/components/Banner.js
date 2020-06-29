@@ -2,14 +2,18 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
  
 
-import { UserApiSelector } from '../Recoil/selectors/UserApiData'
-import atoms from '../Recoil/atoms/index'
-const Banner = () => {
-    const userData = useRecoilValue(UserApiSelector);
 
+import  atoms  from '../Recoil/atoms/'
+const { userData , UserGuildData} = atoms
+
+const Banner = () => {
+    const user = useRecoilValue(userData)
+    const  { guilds }  = useRecoilValue( UserGuildData )  
+    console.log({guilds})
     return(
     <>
-    <h1>{JSON.stringify(userData)}</h1>
+    <h1>{JSON.stringify(user)}</h1>
+    {guilds && guilds.map(guild => <p>{guild.name}</p>)}
 
     </>
     )
