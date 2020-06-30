@@ -1,9 +1,11 @@
 
 import { atom } from 'recoil'
 
-import userData from './user'
+import UserData from './user'
 
 import UserGuildData from './UserGuildData'
+
+import ActiveGuild from './ActiveGuild'
 
 export const msg = atom({
     default:{user:"Ya boi", content:"Yeet"},
@@ -11,7 +13,8 @@ export const msg = atom({
 })
 
 export default {
-    userData,
+    UserData,
     UserGuildData,
-    msg
+    msg,
+    ActiveGuild
 }

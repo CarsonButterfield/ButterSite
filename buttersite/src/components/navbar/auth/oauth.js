@@ -1,11 +1,11 @@
 import React, { useEffect  } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
-import atoms from '../../Recoil/atoms'
+import atoms from '../../../Recoil/atoms'
 import axios from 'axios'
-
-import config from '../../config.json'
-const { userData, UserGuildData } = atoms 
+import './auth.css'
+import config from '../../../config.json'
+const { UserData, UserGuildData } = atoms 
 
 const connectAPISession = (token) => {
    return axios.post(`${config.api}/login` ,token, {withCredentials:true})
@@ -15,14 +15,14 @@ const connectAPISession = (token) => {
 
 const Oauth2 = (props) => {
     const setUserGuildData = useSetRecoilState(UserGuildData)
-    console.log(useRecoilState(userData))
-    const [user, setUser] = useRecoilState(userData)
+    const [user, setUser] = useRecoilState(UserData)
 
         const logout = () => {
+            console.log(user)
             axios.delete(`${config.api}/logout`,{withCredentials:true})
             .then(()=>{
                 setUser({loggedIn:false})
-                setUserGuildData(null)
+                setUserGuildData([])
             })
         }
     useEffect(() => {
@@ -34,7 +34,7 @@ const Oauth2 = (props) => {
                 const userData = await connectAPISession({accessToken,tokenType})
                 if(userData.status === 200){
                     setUser({...userData.data.user, loggedIn:true})
-                    setUserGuildData({guilds:userData.data.guilds})
+                    setUserGuildData(userData.data.guilds)
                     
 
                 }
@@ -44,12 +44,12 @@ const Oauth2 = (props) => {
         }
     },[ user , setUser , setUserGuildData])
     return(
-        <div id="login">
+        <div id="auth">
        {!user.loggedIn ? 
        <a id="login" href="https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds">Log In</a>
         : <Link to="/" onClick={logout}>Logout</Link>
     }
-        {user.loggedIn && user.username}
+
         </div>   
     )
 }

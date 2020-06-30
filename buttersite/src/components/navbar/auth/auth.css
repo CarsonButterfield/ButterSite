@@ -1,0 +1,14 @@
+#auth {
+    background: linear-gradient(to right, var(--lightblue), var(--blue));
+    height: 15px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    
+
+}
+#auth a {
+    color: white;
+    text-decoration:none;
+}

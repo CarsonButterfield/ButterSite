@@ -2,9 +2,7 @@ import { atom } from "recoil"
 
 const UserGuildData = atom({
     key:"userGuildData",
-    default:{
-        guilds:[]
-    }
+    default:[]
 }) 
 
 

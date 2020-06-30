@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { RecoilRoot } from 'recoil';
 import {BrowserRouter as Router} from 'react-router-dom'
 import './App.css';
 
-import MessageForm from './components/MessageForm/MessageForm'
-import Oauth2 from './components/auth/oauth'
-
+import NavBar from './components/navbar/NavBar'
+import GuildContainer from './components/Guild/GuildContainer'
 
 
 function App() {
@@ -13,7 +12,10 @@ function App() {
     <div className="App">
       <RecoilRoot> 
         <Router>
-          <MessageForm />
+          <NavBar/>
+          <Suspense fallback={<p>Loading</p>}> 
+          <GuildContainer/>
+          </Suspense>
         </Router>
       </RecoilRoot>
     </div>
