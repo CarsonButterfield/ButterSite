@@ -4,7 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import './App.css';
 
 import NavBar from './components/navbar/NavBar'
-import GuildContainer from './components/Guild/GuildContainer'
+import LeftNavContainer from './components/LeftNav/LeftNavContainer';
 
 
 function App() {
@@ -13,9 +13,7 @@ function App() {
       <RecoilRoot> 
         <Router>
           <NavBar/>
-          <Suspense fallback={<p>Loading</p>}> 
-          <GuildContainer/>
-          </Suspense>
+          <LeftNavContainer/>
         </Router>
       </RecoilRoot>
     </div>

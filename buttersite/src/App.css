@@ -8,3 +8,17 @@
   --blue:#2947b4;
 
 }
+
+* {
+  margin:0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--darkgray);
+}
+
+.hover-white:hover {
+  color:white;
+  cursor: pointer;
+}
+
