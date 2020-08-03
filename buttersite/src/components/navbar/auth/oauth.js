@@ -32,6 +32,7 @@ const Oauth2 = (props) => {
                 const accessToken = fragment.get("access_token");
                 const tokenType = fragment.get("token_type");
                 const userData = await connectAPISession({accessToken,tokenType})
+                console.log(userData)
                 if(userData.status === 200){
                     setUser({...userData.data.user, loggedIn:true})
                     setUserGuildData(userData.data.guilds)

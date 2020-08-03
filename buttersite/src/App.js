@@ -5,7 +5,7 @@ import './App.css';
 
 import NavBar from './components/navbar/NavBar'
 import LeftNavContainer from './components/LeftNav/LeftNavContainer';
-
+import Test from './components/Graphs/Test'
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Router>
           <NavBar/>
           <LeftNavContainer/>
+            <Test/>
         </Router>
       </RecoilRoot>
     </div>

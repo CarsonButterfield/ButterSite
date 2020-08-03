@@ -14,9 +14,6 @@ const GuildSelector = () => {
     const [showBorder, setBorder] = useState(false)
     const { guild } = useRecoilValue(ActiveGuildData)
 
-    useEffect(()=>{
-        console.log(guild)
-    })
     const toggleOpen = () => {
         if(isOpen){
             setAnimating(true)

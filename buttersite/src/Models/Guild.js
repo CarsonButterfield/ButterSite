@@ -1,3 +1,6 @@
+import axios from 'axios'
+import config from  '../config.json'
+
 function wrapPromise(promise) {
     let status = 'pending'
     let response
@@ -27,7 +30,14 @@ function wrapPromise(promise) {
 
 
 class Guild{
-    static getGuildData(){
-        
+    static getGuildData(guild){
+      console.log(guild)
+      if(guild){
+        console.log('beep')
+        return axios.get(`${config.api}/guild/${guild.id}/data`, {withCredentials:true})
+      }
+      return null
     }
 }
+
+export default Guild
