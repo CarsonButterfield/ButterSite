@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalBarSeries, VerticalGridLines} from 'react-vis';
 import './Graphs.css'
-const Test = ( props ) => {
+const XBarChart = ( props ) => {
     const yStyle = {
         text:{fill:"WhiteSmoke"},
         title:{fill:"WhiteSmoke"}
@@ -27,4 +27,4 @@ const Test = ( props ) => {
     )
 }
 
-export default Test
+export default XBarChart

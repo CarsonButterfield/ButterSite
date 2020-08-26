@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import {Link, Route} from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import ActiveGuildData from '../../Recoil/selectors/ActiveGuildData'
-import Piechart from './Piechart'
+import XBarChart from './XBarChart'
 import './Graphs.css'
 
 const GraphContainer = (props) => {
     const {guildData, guild} = useRecoilValue(ActiveGuildData)
-  
-    let [channelData, setChannelData] = useState([])
-    let [userData, setUserData] = useState([])
+    console.log({guildData})
+    const [channelData, setChannelData] = useState([])
+    const [userData, setUserData] = useState([])
+    
     useEffect(() => {
         (guildData && guild) && guildData.then(res => {
             const mappedChannelData = {}
@@ -39,9 +41,8 @@ const GraphContainer = (props) => {
             for (let user in mappedUserData) {
                     if(guild.members[user])
                     formattedUserData.push({
-                        x: guild.members[user],
+                        x: guild.members[user].displayname,
                         y: mappedUserData[user],
-                        label:guild.members[user].displayname
                         
                     })
             }
@@ -53,8 +54,13 @@ const GraphContainer = (props) => {
 
     return(
         <>
-    {channelData.length && <Piechart data={channelData}/> }
-    {userData.length && <Piechart data={userData}/> }
+        <li>
+        <ul><Link to='/guild'>Guild</Link></ul>
+        <ul><Link to='/users'>Users</Link> </ul>
+        </li>
+
+    {channelData.length && <Route path="/guild" render={()=> <XBarChart data={channelData}/> }/>}
+    {userData.length && <Route path="/users" render={()=> <XBarChart data={userData}/> }/> }
         </>
     )
 }
