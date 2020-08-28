@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Link, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import ActiveGuildData from '../../Recoil/selectors/ActiveGuildData'
 import XBarChart from './XBarChart'
@@ -7,7 +7,7 @@ import './Graphs.css'
 
 const GraphContainer = (props) => {
     const {guildData, guild} = useRecoilValue(ActiveGuildData)
-    console.log({guildData})
+    const [selectOpen, setSelectOpen] = useState(false)
     const [channelData, setChannelData] = useState([])
     const [userData, setUserData] = useState([])
     
@@ -54,10 +54,7 @@ const GraphContainer = (props) => {
 
     return(
         <>
-        <li>
-        <ul><Link to='/guild'>Guild</Link></ul>
-        <ul><Link to='/users'>Users</Link> </ul>
-        </li>
+       
 
     {channelData.length && <Route path="/guild" render={()=> <XBarChart data={channelData}/> }/>}
     {userData.length && <Route path="/users" render={()=> <XBarChart data={userData}/> }/> }

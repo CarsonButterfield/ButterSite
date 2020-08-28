@@ -11,6 +11,9 @@ const connectAPISession = (token) => {
    return axios.post(`${config.api}/login` ,token, {withCredentials:true})
    
 }
+const openWindow = () => {
+    window.open('https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds')
+}
 
 
 const Oauth2 = (props) => {
