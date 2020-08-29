@@ -7,19 +7,26 @@ import './auth.css'
 import config from '../../../config.json'
 const { UserData, UserGuildData } = atoms 
 
-const connectAPISession = (token) => {
-   return axios.post(`${config.api}/login` ,token, {withCredentials:true})
-   
-}
-const openWindow = () => {
-    window.open('https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds')
-}
+
+
 
 
 const Oauth2 = (props) => {
     const setUserGuildData = useSetRecoilState(UserGuildData)
     const [user, setUser] = useRecoilState(UserData)
-
+    const connectAPISession = (token) => {
+        axios.post(`${config.api}/login` ,token, {withCredentials:true})
+        .then((res => {
+            setUser({...res.data.user, loggedIn:true})
+            setUserGuildData(res.data.guilds)
+        }))
+       
+    }
+    const openWindow = () => {
+        window.removeEventListener('message', connectAPISession);
+        window.open('https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fredirect&response_type=token&scope=identify%20email%20guilds',"login","width=600,height=1000")
+        window.addEventListener('message', msg=> connectAPISession(msg.data))
+    }
         const logout = () => {
             console.log(user)
             axios.delete(`${config.api}/logout`,{withCredentials:true})
@@ -28,29 +35,11 @@ const Oauth2 = (props) => {
                 setUserGuildData([])
             })
         }
-    useEffect(() => {
-        const fragment = new URLSearchParams(window.location.hash.slice(1));
-        if (fragment.has("access_token") && !user.loggedIn) {
-            const checkToken = async() => {
-                const accessToken = fragment.get("access_token");
-                const tokenType = fragment.get("token_type");
-                const userData = await connectAPISession({accessToken,tokenType})
-                console.log(userData)
-                if(userData.status === 200){
-                    setUser({...userData.data.user, loggedIn:true})
-                    setUserGuildData(userData.data.guilds)
-                    
-
-                }
-            }
-            checkToken()   
-
-        }
-    },[ user , setUser , setUserGuildData])
+    
     return(
         <div id="auth">
        {!user.loggedIn ? 
-       <a id="login" href="https://discord.com/api/oauth2/authorize?client_id=233458197338390528&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify%20guilds">Log In</a>
+       <button onClick={openWindow} id="login" >Log In</button>
         : <Link to="/" onClick={logout}>Logout</Link>
     }
 

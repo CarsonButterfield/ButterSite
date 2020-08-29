@@ -11,11 +11,10 @@ function App() {
   return (
     <div className="App">
       <RecoilRoot> 
-        <Router>
+        
           <NavBar/>
           <LeftNavContainer/>
             <GraphContainer/>
-        </Router>
       </RecoilRoot>
     </div>
   );
