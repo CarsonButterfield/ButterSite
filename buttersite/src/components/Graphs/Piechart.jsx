@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalBarSeries, VerticalGridLines} from 'react-vis';
 import './Graphs.css'
 const Test = ( props ) => {
+    console.log(props.data)
     const yStyle = {
         text:{fill:"WhiteSmoke"},
         title:{fill:"WhiteSmoke"}

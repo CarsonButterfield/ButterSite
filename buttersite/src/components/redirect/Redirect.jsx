@@ -6,7 +6,7 @@ const Redirect = (props) => {
         const fragment = new URLSearchParams(window.location.hash.slice(1));
                 const accessToken = fragment.get("access_token");
                 const tokenType = fragment.get("token_type");
-                window.opener.postMessage({accessToken,tokenType})
+                window.opener.postMessage({accessToken,tokenType,login:true})
                 window.close()
     })
     return(

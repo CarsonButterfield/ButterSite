@@ -15,7 +15,7 @@ const XBarChart = ( props ) => {
     }
     
     return (
-        <div  class="piegraph">
+        <div  class="chart">
         <XYPlot xType="ordinal" width={1200} height={500}>
             <XAxis tickFormat={truncateLables} style={xStyle}/>
             <YAxis title="hours" style={yStyle} tickFormat={x => (x / (1000 * 60 * 60)).toFixed(1)}/>
