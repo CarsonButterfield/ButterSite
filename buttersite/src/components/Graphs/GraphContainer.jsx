@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import ActiveGuildData from '../../Recoil/selectors/ActiveGuildData'
 import GuildStats from '../Guild/GuildStats'
+import MemberStats from '../Guild/MemberStats'
 import './Graphs.css'
 
 const GraphContainer = (props) => {
@@ -16,7 +17,6 @@ const GraphContainer = (props) => {
             const mappedUserData = {}
             const formattedUserData = []
             const formattedChannelData = []
-           
             res.data.guild.voiceLogs.forEach(log => {
                 if (mappedChannelData[log.voiceChannel]) {
                     mappedChannelData[log.voiceChannel] += log.timeLeft - log.timeJoined
@@ -52,11 +52,11 @@ const GraphContainer = (props) => {
     }, [guildData, guild])
 
     return(
-        <>
+        <div id="graph-container">
        
-    {channelData.length && <Route path="/guild" render={()=> <GuildStats data={channelData}/> }/>}
-    {userData.length && <Route path="/users" render={()=> <GuildStats data={userData}/> }/> }
-        </>
+    {channelData.length && <Route path="/guild" render={()=> <GuildStats guild={guild} data={channelData}/> }/>}
+    {userData.length && <Route path="/users" render={()=> <MemberStats guild={guild} data={userData}/> }/> }
+        </div>
     )
 }
 

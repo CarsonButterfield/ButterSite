@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalBarSeries, VerticalGridLines} from 'react-vis';
 import './Graphs.css'
 const Test = ( props ) => {

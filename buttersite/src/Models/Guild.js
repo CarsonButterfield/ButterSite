@@ -31,9 +31,7 @@ import config from  '../config.json'
 
 class Guild{
     static getGuildData(guild){
-      console.log(guild)
       if(guild){
-        console.log('beep')
         return axios.get(`${config.api}/guild/${guild.id}/data`, {withCredentials:true})
       }
       return null

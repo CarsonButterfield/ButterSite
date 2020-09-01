@@ -9,7 +9,7 @@ const TotalHours = (props) => {
     })
     hours =( hours / (1000 * 60 * 60)).toFixed(2)
     return(
-         <p class="descriptor">{hours} Total hours tracked</p>   
+         <p className="descriptor">{hours} Total hours tracked</p>   
     )
 
 }

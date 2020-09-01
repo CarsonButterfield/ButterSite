@@ -9,7 +9,6 @@ const ActiveGuildData = selector({
         const guildIdx = get(ActiveGuild)
         const guild = get(UserGuildData)[guildIdx]
         const guildData = Models.Guild.getGuildData(guild)
-        console.log(guildData)
         return {guild, guildData}
     }
 })
