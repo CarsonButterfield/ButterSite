@@ -5,3 +5,15 @@
 #graph-container{
     margin-left: 410px;
 }
+.simple-pie{
+    color:whitesmoke;
+    text-align: center;
+    width: 250px;
+    
+}
+
+.simple-pie-label{
+    position: relative;
+    top:125px;
+    font-size:24px
+}
