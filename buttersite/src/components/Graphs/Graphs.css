@@ -14,6 +14,18 @@
 
 .simple-pie-label{
     position: relative;
-    top:125px;
+    top:165px;
     font-size:24px
+}
+.simple-pie-percentage{
+    position: relative;
+    top:165px;
+    font-size:50px
+}
+
+.graph-hover-label {
+    position: relative;
+    color:whitesmoke;
+    text-align: center;
+    width:80px
 }

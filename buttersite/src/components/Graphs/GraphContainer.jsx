@@ -54,8 +54,8 @@ const GraphContainer = (props) => {
     return(
         <div id="graph-container">
        
-    {channelData.length && <Route path="/guild" render={()=> <GuildStats guild={guild} data={channelData}/> }/>}
-    {userData.length && <Route path="/users" render={()=> <MemberStats guild={guild} data={userData}/> }/> }
+    <Route path="/guild" render={()=> <GuildStats guild={guild} data={channelData}/> }/>
+    <Route path="/users" render={()=> <MemberStats guild={guild} data={userData}/> }/> 
         </div>
     )
 }
